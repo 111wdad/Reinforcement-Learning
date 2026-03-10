@@ -1,0 +1,23 @@
+agent:
+  policy_type: mlp  # mlp或transformer
+  features: 512     # 增加特征数量，提高表达能力
+  nheads: 8
+  num_layers: 4     # 增加网络深度
+  pi_arch: [512, 256]  # 策略网络的隐藏层大小
+  qf_arch: [512, 512, 256]  # 值函数网络的隐藏层大小，增加一层
+  tau: 0.001  # 降低软更新系数，使目标网络更新更平滑
+  ent_coef: "auto"  # 自动调整熵系数，平衡探索与利用
+training:
+  algorithm: sac  # 使用SAC算法
+  learning_rate: 0.0001  # 降低学习率，减少震荡
+  gamma: 0.99  # 折扣因子
+  device: cuda  # 使用CUDA加速训练
+  batch_size: 256  # 增大批量大小，提高稳定性
+  buffer_size: 1000000
+  learning_starts: 10000  # 增加初始随机探索步数
+  train_freq: 1
+  gradient_steps: 1  # 每次更新执行一次梯度步骤
+  target_update_interval: 2  # 增加目标网络更新间隔
+  use_sde: false  # 关闭状态依赖探索，减少随机性
+  sde_sample_freq: 4  # SDE采样频率
+  use_tensorboard: true  # 启用tensorboard记录

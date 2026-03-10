@@ -1,0 +1,9 @@
+host: 10.119.13.38
+port: 1014
+pos_scale: 100  # 位置比例因子
+vel_scale: 10   # 速度比例因子
+logger: true    # 启用日志记录
+train_type: "APPROACH"  # 训练类型
+save_path: "../logs/single_training/"
+max_steps: 2000  # 每个回合的最大步数      # 初始偏航角为0
+correct_orientation: true  # 启用姿态修正
